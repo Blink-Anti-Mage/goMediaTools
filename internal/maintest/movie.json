@@ -1,0 +1,120 @@
+{
+    "adult": false,
+    "backdrop_path": "/dwNeWkccTWJCgfc6yqpkuH93nSu.jpg",
+    "belongs_to_collection": {
+        "id": 930409,
+        "name": "长津湖（系列）",
+        "poster_path": "/fPS4yZW8hsVZlHnfclhNjFhMKPt.jpg",
+        "backdrop_path": "/iMlbc9rkHfcSkXjeOkCbKxtgAem.jpg"
+    },
+    "budget": 200000000,
+    "genres": [
+        {
+            "id": 18,
+            "name": "剧情"
+        },
+        {
+            "id": 10752,
+            "name": "战争"
+        }
+    ],
+    "homepage": "",
+    "id": 779029,
+    "imdb_id": "tt13462900",
+    "original_language": "zh",
+    "original_title": "长津湖",
+    "overview": "讲述了一个志愿军连队在极度严酷环境下坚守阵地奋勇杀敌，为长津湖战役胜利作出重要贡献的感人故事。",
+    "popularity": 15.958,
+    "poster_path": "/b3BM9liGHm4nvzsDO3frDtiEC6P.jpg",
+    "production_companies": [
+        {
+            "id": 159161,
+            "logo_path": null,
+            "name": "August 1st Film Studio",
+            "origin_country": ""
+        },
+        {
+            "id": 30148,
+            "logo_path": "/zerhOenUD6CkH8SMgZUhrDkOs4w.png",
+            "name": "Bona Film Group",
+            "origin_country": "CN"
+        },
+        {
+            "id": 3407,
+            "logo_path": "/iVMjKOFyRvm9PW45lW1wW6TSvnj.png",
+            "name": "Shanghai Film Group",
+            "origin_country": "CN"
+        },
+        {
+            "id": 65442,
+            "logo_path": "/mAAUTVBF4KGW4QxESHWg4N8pLdF.png",
+            "name": "Beijing Dongfang International Cultural Communications Company",
+            "origin_country": "CN"
+        },
+        {
+            "id": 69484,
+            "logo_path": "/2xtmvbEse87LM7OJXVksv7DToZx.png",
+            "name": "Alibaba Pictures Group",
+            "origin_country": "CN"
+        },
+        {
+            "id": 14714,
+            "logo_path": "/dSHaVKtBCpMU5VP9wMbTkqov62i.png",
+            "name": "China Film Group Corporation",
+            "origin_country": "CN"
+        },
+        {
+            "id": 76473,
+            "logo_path": null,
+            "name": "Distribution Workshop",
+            "origin_country": "HK"
+        },
+        {
+            "id": 116133,
+            "logo_path": null,
+            "name": "A Really Happy Film",
+            "origin_country": "HK"
+        },
+        {
+            "id": 25660,
+            "logo_path": null,
+            "name": "Huaxia Film Distribution",
+            "origin_country": "CN"
+        }
+    ],
+    "production_countries": [
+        {
+            "iso_3166_1": "CN",
+            "name": "China"
+        },
+        {
+            "iso_3166_1": "HK",
+            "name": "Hong Kong"
+        },
+        {
+            "iso_3166_1": "US",
+            "name": "United States of America"
+        }
+    ],
+    "release_date": "2021-09-30",
+    "revenue": 902540935,
+    "runtime": 176,
+    "spoken_languages": [
+        {
+            "english_name": "Mandarin",
+            "iso_639_1": "zh",
+            "name": "普通话"
+        },
+        {
+            "english_name": "English",
+            "iso_639_1": "en",
+            "name": "English"
+        }
+    ],
+    "status": "Released",
+    "tagline": "",
+    "title": "长津湖",
+    "video": false,
+    "vote_average": 5.968,
+    "vote_count": 78
+}
