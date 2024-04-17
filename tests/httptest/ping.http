@@ -13,3 +13,14 @@ content-type: application/json
 {
     "path" : "\\\\nas\\media\\电影\\八佰 (2020)\\八佰 (2020) 1080p AC3.mkv"
 }
+
+
+### {
+POST  {{baseUrl}}/api/v1/putLocalNfo  HTTP/1.1
+content-type: application/json
+
+{
+    "path" : "\\\\nas\\media\\电影\\八佰 (2020)\\八佰 (2020) 1080p AC3.mkv",
+    "title" : "title",
+    "plot": "plot"
+}

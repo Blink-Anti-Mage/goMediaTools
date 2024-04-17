@@ -16,6 +16,7 @@ func InitRouter(g *gin.Engine) {
 
 		r.GET("/getLocalMedia", api.GetLocalMedia)
 		r.POST("/getLocalNfo", api.GetLocalNfo)
+		r.POST("/putLocalNfo", api.PutNfo)
 	}
 
 }

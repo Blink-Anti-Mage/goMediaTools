@@ -13,3 +13,16 @@ func GetNFO(data []byte) (*model.NfoMovie, error) {
 	}
 	return &movie, nil
 }
+
+func SetNFO(data model.NfoReq) (xmldata []byte, err error) {
+	var movie model.NfoMovie
+	movie.Title = data.Title
+	movie.Plot = data.Plot
+
+	xmldata, err = xml.MarshalIndent(movie, "", " ")
+	if err != nil {
+		return nil, err
+	}
+
+	return xmldata, nil
+}
