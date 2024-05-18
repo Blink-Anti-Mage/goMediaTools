@@ -113,6 +113,18 @@ func GetTmdbNfo(c *gin.Context) {
 		return
 	}
 
+	//  保存海报
+	if data.PosterPath != "" {
+		posterUrl := "https://image.tmdb.org/t/p/w500/" + data.PosterPath
+		ext := filepath.Ext(data.PosterPath)
+		err = service.DownloadPoster(posterUrl, filepath.Join(dir, fileame+"-poster"+ext))
+
+		if err != nil {
+			restful.FailWithMessage("poster WriteFile error", c)
+			return
+		}
+	}
+
 	restful.OkWithMessage("", c)
 	return
 }

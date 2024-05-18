@@ -33,3 +33,14 @@ func TestJson(t *testing.T) {
 	}
 	fmt.Println(data.ID, data.Overview)
 }
+func TestDownloadPoster(t *testing.T) {
+	posterUrl := "https://image.tmdb.org/t/p/w500/1p25wDEdFRRTtwtPFbtPHISefzG.jpg"
+	localPath := `\\nas\media\dy\test.jpg`
+
+	err := DownloadPoster(posterUrl, localPath)
+	if err != nil {
+		t.Errorf("DownloadPoster returned an error: %v", err)
+	}
+
+	// TODO: Add assertions to verify the behavior of the function
+}

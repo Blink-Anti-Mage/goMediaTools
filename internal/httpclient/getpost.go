@@ -121,6 +121,24 @@ func GetV2(fullUrlPath string, header map[string]string, httpClient *http.Client
 	return body, nil
 }
 
+func GetV1(fullUrlPath string, header map[string]string, httpClient *http.Client) (*http.Response, error) {
+	if httpClient == nil {
+		httpClient = defaultHttpClient
+	}
+	req, err := http.NewRequest("GET", fullUrlPath, nil)
+	if err != nil {
+		return nil, err
+	}
+	for key, value := range header {
+		req.Header.Add(key, value)
+	}
+	res, err := httpClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
 func PutV2(path string, postData []byte, header map[string]string, httpClient *http.Client) ([]byte, error) {
 	var s []byte
 	if httpClient == nil {

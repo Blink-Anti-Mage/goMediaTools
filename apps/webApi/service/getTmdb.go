@@ -6,6 +6,8 @@ import (
 	"goMediatools/datacache"
 	"goMediatools/internal/httpclient"
 	"goMediatools/model"
+	"io"
+	"os"
 )
 
 var headermap = map[string]string{
@@ -64,4 +66,20 @@ func GetMovieCredits(movieId int, language string) {
 		fmt.Println(err.Error())
 	}
 	fmt.Println(string(resp))
+}
+
+func DownloadPoster(posterUrl string, localPath string) error {
+	resp, err := httpclient.GetV1(posterUrl, headermap, nil)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+	out, err := os.Create(localPath)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, resp.Body)
+	return err
 }
