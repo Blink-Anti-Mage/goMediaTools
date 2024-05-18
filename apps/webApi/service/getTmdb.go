@@ -37,17 +37,20 @@ func GetMovieInfo(movieName string, language string) {
 	fmt.Println(datacache.LocalCache)
 }
 
-func GetMovieDetails(movieId int, language string) {
+func GetMovieDetails(movieId string, language string) (model.MovieDetails, error) {
 	if language == "" {
 		language = datacache.CN
 	}
-	url := fmt.Sprintf("https://api.themoviedb.org/3/movie/%d?language=%s", movieId, language)
-	fmt.Println(url)
+	url := fmt.Sprintf("https://api.themoviedb.org/3/movie/%s?language=%s", movieId, language)
+	var data model.MovieDetails
 	resp, err := httpclient.GetV2(url, headermap, nil)
 	if err != nil {
-		fmt.Println(err.Error())
+		return data, err
 	}
-	fmt.Println(string(resp))
+	if err := json.Unmarshal(resp, &data); err != nil {
+		return data, err
+	}
+	return data, nil
 }
 
 func GetMovieCredits(movieId int, language string) {

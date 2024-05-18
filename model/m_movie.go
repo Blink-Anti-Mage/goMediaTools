@@ -15,6 +15,7 @@ type NfoMovie struct {
 	Rating        string   `xml:"rating" json:"rating"`
 	Year          string   `xml:"year" json:"year"`
 	MPAA          string   `xml:"mpaa" json:"mpaa"`
+	Tmdbid        string   `xml:"tmdbid" json:"tmdbid"`
 }
 
 type Movie struct {

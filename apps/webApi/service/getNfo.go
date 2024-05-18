@@ -26,3 +26,12 @@ func SetNFO(data model.NfoReq) (xmldata []byte, err error) {
 
 	return xmldata, nil
 }
+
+func SetNFOs(data model.NfoMovie) (xmldata []byte, err error) {
+	xmldata, err = xml.MarshalIndent(data, "", " ")
+	if err != nil {
+		return nil, err
+	}
+
+	return xmldata, nil
+}

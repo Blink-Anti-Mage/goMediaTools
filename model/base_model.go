@@ -13,3 +13,8 @@ type NfoReq struct {
 	Title string `json:"title"`
 	Path  string `json:"path"`
 }
+
+type TmdbNfoReq struct {
+	Tmdbid string `json:"tmdbid"`
+	Path   string `json:"path"`
+}
