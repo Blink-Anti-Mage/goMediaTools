@@ -7,6 +7,7 @@ import (
 	"goMediatools/model"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func Getlocal() {
@@ -91,4 +92,52 @@ func CheckNfo(path string) (nfo bool, poster bool, chpath bool, posterdir string
 		poster = true
 	}
 	return nfo, poster, chpath, posterdir
+}
+
+// TreeNode 代表一个文件树节点
+type TreeNode struct {
+	Name     string     `json:"name"`
+	Path     string     `json:"path"`
+	Ifmovie  bool       `json:"ifmovie"`
+	Ifnfo    bool       `json:"ifnfo"`
+	Children []TreeNode `json:"children,omitempty"`
+}
+
+func BuildTree(rootPath string) (TreeNode, error) {
+	rootNode := TreeNode{Name: filepath.Base(rootPath),
+		Path: rootPath, Ifmovie: false, Ifnfo: false,
+		Children: []TreeNode{}}
+
+	files, err := os.ReadDir(rootPath)
+	if err != nil {
+		return rootNode, err
+	}
+
+	for _, file := range files {
+		fullPath := filepath.Join(rootPath, file.Name())
+		if file.IsDir() {
+			childNode, err := BuildTree(filepath.Join(rootPath, file.Name()))
+			if err != nil {
+				return rootNode, err
+			}
+			rootNode.Children = append(rootNode.Children, childNode)
+		} else {
+			ifmovie := false
+			ifnfo := false
+			if strings.HasSuffix(file.Name(), ".nfo") {
+				ifnfo = true
+			} else {
+				for _, suffix := range config.Con.SuffixList {
+					if strings.HasSuffix(file.Name(), suffix) {
+						ifmovie = true
+					}
+				}
+			}
+			rootNode.Children = append(rootNode.Children, TreeNode{Name: file.Name(),
+				Path: fullPath, Ifmovie: ifmovie, Ifnfo: ifnfo})
+
+		}
+	}
+
+	return rootNode, nil
 }

@@ -1,12 +1,11 @@
 package api
 
 import (
-	"fmt"
 	"goMediatools/apps/webApi/service"
 	"goMediatools/datacache"
 	"goMediatools/internal/ginexpand/restful"
 	"goMediatools/model"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -20,6 +19,22 @@ func GetLocalMedia(c *gin.Context) {
 	return
 }
 
+func GetFileMedia(c *gin.Context) {
+	var path model.PathReq
+	if err := c.ShouldBindJSON(&path); err != nil {
+		restful.FailCodeM(400, "Req error", c)
+		return
+	}
+	tree, err := service.BuildTree(path.Path)
+	if err != nil {
+		restful.FailCodeM(400, "Invalid request body", c)
+		return
+	}
+
+	restful.OkWithData(tree, c)
+	return
+}
+
 func GetLocalNfo(c *gin.Context) {
 	var movie model.PathReq
 	if err := c.ShouldBindJSON(&movie); err != nil {
@@ -27,12 +42,7 @@ func GetLocalNfo(c *gin.Context) {
 		return
 	}
 
-	dir, filen := filepath.Split(movie.Path)
-	fileame := filen[:len(filen)-len(filepath.Ext(filen))]
-	nfoname := fileame + ".nfo"
-
-	fmt.Println(filepath.Join(dir, nfoname))
-	data, err := ioutil.ReadFile(filepath.Join(dir, nfoname))
+	data, err := os.ReadFile(movie.Path)
 	if err != nil {
 		restful.FailWithMessage("nfo ioread error", c)
 		return
@@ -59,12 +69,11 @@ func PutNfo(c *gin.Context) {
 		return
 	}
 
-	dir, filen := filepath.Split(movie.Path)
-	fileame := filen[:len(filen)-len(filepath.Ext(filen))]
-	nfoname := fileame + ".nfo"
+	// dir, filen := filepath.Split(movie.Path)
+	// fileame := filen[:len(filen)-len(filepath.Ext(filen))]
+	// nfoname := fileame + ".nfo"
 
-	// 将XML数据写入文件
-	if err := ioutil.WriteFile(filepath.Join(dir, nfoname), xmldata, 0644); err != nil {
+	if err := os.WriteFile(movie.Path, xmldata, 0644); err != nil {
 		restful.FailWithMessage("nfo WriteFile error", c)
 		return
 	}
@@ -108,7 +117,7 @@ func GetTmdbNfo(c *gin.Context) {
 	nfoname := fileame + ".nfo"
 
 	// 将XML数据写入文件
-	if err := ioutil.WriteFile(filepath.Join(dir, nfoname), xmldata, 0644); err != nil {
+	if err := os.WriteFile(filepath.Join(dir, nfoname), xmldata, 0644); err != nil {
 		restful.FailWithMessage("nfo WriteFile error", c)
 		return
 	}

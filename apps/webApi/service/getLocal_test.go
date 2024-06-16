@@ -1,6 +1,7 @@
 package service
 
 import (
+	"encoding/json"
 	"fmt"
 	"goMediatools/internal/config"
 	"testing"
@@ -19,4 +20,17 @@ func TestGetlocal(t *testing.T) {
 	// 	fmt.Printf("JSON marshaling failed: %s", err)
 	// }
 	// fmt.Println(string(jsonData))
+}
+func TestGetlocalF(t *testing.T) {
+	rootPath := `\\nas\media\dy`
+	tree, err := BuildTree(rootPath)
+	if err != nil {
+
+	}
+	treeJSON, err := json.MarshalIndent(tree, "", "  ")
+	if err != nil {
+
+	}
+
+	fmt.Println(string(treeJSON))
 }

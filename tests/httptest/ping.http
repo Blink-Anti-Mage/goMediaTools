@@ -6,14 +6,6 @@ content-type: application/json
 GET {{baseUrl}}/api/v1/getLocalMedia HTTP/1.1
 content-type: application/json
 
-### {
-POST  {{baseUrl}}/api/v1/getLocalNfo HTTP/1.1
-content-type: application/json
-
-{
-    "path" : "\\\\nas\\media\\电影\\八佰 (2020)\\八佰 (2020) 1080p AC3.mkv"
-}
-
 
 ### {
 POST  {{baseUrl}}/api/v1/putLocalNfo  HTTP/1.1
@@ -23,4 +15,29 @@ content-type: application/json
     "path" : "\\\\nas\\media\\电影\\八佰 (2020)\\八佰 (2020) 1080p AC3.mkv",
     "title" : "title",
     "plot": "plot"
+}
+
+### {
+POST  {{baseUrl}}/api/v1/getTmdbNfo  HTTP/1.1
+content-type: application/json
+
+{
+    "path" : "\\\\nas\\media\\dy",
+}
+
+### 获取本地目录
+POST  {{baseUrl}}/api/v1/getFileMedia  HTTP/1.1
+content-type: application/json
+
+{
+    "path" : "\\\\nas\\media\\dy"
+}
+
+
+### 获取本地NFO
+POST  {{baseUrl}}/api/v1/getLocalNfo HTTP/1.1
+content-type: application/json
+
+{
+    "path" : "//nas/media/dy/08.赌霸+(1991)蓝光原盘REMUX+[国粤双语]+[内封简、繁中字]/賭霸.1991.nfo"
 }
