@@ -29,5 +29,5 @@ func InitConfig(filepath string) error {
 // config
 type Config struct {
 	SuffixList []string `json:"SuffixList"`
-	MovieDir   string   `json:"MovieDir"`
+	Tmdbkey    string   `json:"tmdbkey"`
 }

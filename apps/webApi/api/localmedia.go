@@ -1,9 +1,7 @@
 package api
 
 import (
-	"fmt"
 	"goMediatools/apps/webApi/service"
-	"goMediatools/datacache"
 	"goMediatools/internal/ginexpand/restful"
 	"goMediatools/model"
 	"os"
@@ -14,11 +12,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetLocalMedia(c *gin.Context) {
-	service.Getlocal()
-	restful.OkWithData(datacache.LocalCache, c)
-	return
-}
+// func GetLocalMedia(c *gin.Context) {
+// 	service.Getlocal()
+// 	restful.OkWithData(datacache.LocalCache, c)
+// 	return
+// }
 
 func GetFileMedia(c *gin.Context) {
 	var path model.PathReq
@@ -79,7 +77,6 @@ func Renameworker(c *gin.Context) {
 		restful.FailCodeM(400, "Invalid request body", c)
 		return
 	}
-	fmt.Println(path.Path)
 	err := service.MoveDir2(path.Path)
 	if err != nil {
 		restful.FailWithMessage("RunMovedir  error", c)

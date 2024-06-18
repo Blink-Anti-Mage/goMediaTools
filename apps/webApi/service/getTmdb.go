@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"goMediatools/datacache"
+	"goMediatools/internal/config"
 	"goMediatools/internal/httpclient"
 	"goMediatools/model"
 	"io"
@@ -12,7 +13,7 @@ import (
 
 var headermap = map[string]string{
 	"accept":        "application/json",
-	"Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyOTU1YmUzMTU0ZWZjNzY3ODA4ODQ0YTEzZmU5MTU5NSIsInN1YiI6IjY1ZmE3NzM2NzcwNzAwMDE0OTA1Y2JiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rYxRKeWRLpsLTwoykSRzdA8u5SwLZ7hOZ0YHOD1YeHE",
+	"Authorization": config.Con.Tmdbkey,
 }
 
 func GetMovieInfo(movieName string, language string) {
