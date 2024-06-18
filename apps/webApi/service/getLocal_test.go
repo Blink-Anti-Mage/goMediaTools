@@ -25,12 +25,28 @@ func TestGetlocalF(t *testing.T) {
 	rootPath := `\\nas\media\dy`
 	tree, err := BuildTree(rootPath)
 	if err != nil {
-
 	}
 	treeJSON, err := json.MarshalIndent(tree, "", "  ")
 	if err != nil {
-
+	}
+	fmt.Println(string(treeJSON))
+}
+func TestMove(t *testing.T) {
+	rootPath := `\\nas\media\dy`
+	err := MoveDir(rootPath)
+	if err != nil {
+	}
+}
+func TestMove2(t *testing.T) {
+	err := config.InitConfig("D:\\code\\golang_code\\goMediaTools\\config.json")
+	if err != nil {
+		fmt.Println("add config err:" + err.Error())
+		return
 	}
 
-	fmt.Println(string(treeJSON))
+	rootPath := `\\nas\media\dy`
+	err = MoveDir2(rootPath)
+	if err != nil {
+
+	}
 }

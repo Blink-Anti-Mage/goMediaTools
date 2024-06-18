@@ -21,6 +21,9 @@ func InitRouter(g *gin.Engine) {
 		r.POST("/putLocalNfo", api.PutNfo)
 
 		r.POST("/getTmdbNfo", api.GetTmdbNfo)
+
+		r.POST("/runMovedir", api.RunMovedir)
+		r.POST("/renameworker", api.Renameworker)
 	}
 
 }

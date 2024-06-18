@@ -56,6 +56,38 @@ func GetLocalNfo(c *gin.Context) {
 	return
 }
 
+func RunMovedir(c *gin.Context) {
+	var path model.PathReq
+	if err := c.ShouldBindJSON(&path); err != nil {
+		restful.FailCodeM(400, "Invalid request body", c)
+		return
+	}
+	err := service.MoveDir(path.Path)
+	if err != nil {
+		restful.FailWithMessage("RunMovedir  error", c)
+		return
+	}
+
+	restful.Ok(c)
+	return
+}
+
+func Renameworker(c *gin.Context) {
+	var path model.PathReq
+	if err := c.ShouldBindJSON(&path); err != nil {
+		restful.FailCodeM(400, "Invalid request body", c)
+		return
+	}
+	err := service.MoveDir2(path.Path)
+	if err != nil {
+		restful.FailWithMessage("RunMovedir  error", c)
+		return
+	}
+
+	restful.Ok(c)
+	return
+}
+
 func PutNfo(c *gin.Context) {
 	var movie model.NfoReq
 	if err := c.ShouldBindJSON(&movie); err != nil {
@@ -68,10 +100,6 @@ func PutNfo(c *gin.Context) {
 		restful.FailWithMessage("nfo ioread error", c)
 		return
 	}
-
-	// dir, filen := filepath.Split(movie.Path)
-	// fileame := filen[:len(filen)-len(filepath.Ext(filen))]
-	// nfoname := fileame + ".nfo"
 
 	if err := os.WriteFile(movie.Path, xmldata, 0644); err != nil {
 		restful.FailWithMessage("nfo WriteFile error", c)
