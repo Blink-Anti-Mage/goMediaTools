@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"goMediatools/internal/config"
+	"path/filepath"
 	"testing"
 )
 
@@ -49,4 +50,11 @@ func TestMove2(t *testing.T) {
 	if err != nil {
 
 	}
+}
+
+func TestFIR(t *testing.T) {
+
+	rootPath := `//nas/media/dy`
+	r := filepath.Join(rootPath, "")
+	fmt.Println(r)
 }

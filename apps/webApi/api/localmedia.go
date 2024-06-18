@@ -1,6 +1,7 @@
 package api
 
 import (
+	"fmt"
 	"goMediatools/apps/webApi/service"
 	"goMediatools/datacache"
 	"goMediatools/internal/ginexpand/restful"
@@ -78,6 +79,7 @@ func Renameworker(c *gin.Context) {
 		restful.FailCodeM(400, "Invalid request body", c)
 		return
 	}
+	fmt.Println(path.Path)
 	err := service.MoveDir2(path.Path)
 	if err != nil {
 		restful.FailWithMessage("RunMovedir  error", c)

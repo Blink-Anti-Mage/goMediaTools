@@ -41,3 +41,12 @@ content-type: application/json
 {
     "path" : "//nas/media/dy/08.赌霸+(1991)蓝光原盘REMUX+[国粤双语]+[内封简、繁中字]/賭霸.1991.nfo"
 }
+
+
+### 重命名
+POST  {{baseUrl}}/api/v1/renameworker  HTTP/1.1
+content-type: application/json
+
+{
+    "path" : "\\\\nas\\media\\dy"
+}

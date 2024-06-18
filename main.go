@@ -21,6 +21,5 @@ func main() {
 	r.Use(ginexpand.Cors())
 	router.InitRouter(r)
 
-	r.StaticFS("/images", gin.Dir(config.Con.MovieDir, true))
 	r.Run(":5025")
 }

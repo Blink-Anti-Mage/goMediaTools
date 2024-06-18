@@ -10,9 +10,10 @@ var r *gin.RouterGroup
 
 func InitRouter(g *gin.Engine) {
 	r = g.Group("/api/v1")
-
+	api.GinEngine = g
 	{
 		r.GET("/ping", api.Ping)
+		r.POST("/StaticFS", api.StaticFS)
 
 		r.GET("/getLocalMedia", api.GetLocalMedia)
 
